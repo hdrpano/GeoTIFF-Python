@@ -169,7 +169,7 @@ Now we need a dataset. We will use ASTER from the NASA. ASTER GDEM is a 1 arc-se
 
 ![Select Aster tiles](./images/ASTER-tiles.png) 
 
-Use this python program `Download-Aster-GeoTiff.py` from this repository. The program will unzip the GeoTIFF files and remove all `*num.tif` files. Copy your GeoTIFF files into `/your path/opentopodata/data/aster30m`
+Use this python program [Download-Aster-GeoTiff.py](./tools/Download-Aster-GeoTiff.py) from this repository. The program will unzip the GeoTIFF files and remove all `*num.tif` files. Copy your GeoTIFF files into `/your path/opentopodata/data/aster30m`
 
 ### Build the local server
 Now you can run the build.
