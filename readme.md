@@ -286,3 +286,41 @@ methods = {
 Instead of building GDAL yourself, you can install ready-made wheels:
 Find the right version of Python and GDAL that work together. → List of compatible versions (unofficial but very reliable Windows builds by Christoph Gohlke).
 [GDAL wheels Windows 11](https://github.com/cgohlke/geospatial-wheels/releases/tag/v2025.7.4)
+
+```python --version```
+
+Download the .whl for your Python version `(e.g. GDAL-3.7.2-cp311-cp311-win_amd64.whl for Python 3.11, 64-bit).`
+
+Install it manually:
+
+```console
+pip install path\to\GDAL-3.7.2-cp311-cp311-win_amd64.whl
+```
+
+Important: The Python version and architecture (32/64-bit) must match exactly!
+
+##Mac OS GDAL Python installation
+Use the correct brew for Mac Silicon or Intel. The terminal must not use Rosetta on Mac Silicon. 
+
+```console
+uname -m
+brew update
+brew install gdal
+gdalinfo -–version
+pip install GDAL==version
+```
+###Homebrew uses /opt/homebrew/Cellar/gdal/<version>/ on Mac Silicon.
+
+```console
+/opt/homebrew/bin/      → z.B. gdalinfo, ogr2ogr, gdal_translate
+/opt/homebrew/lib/      → z.B. libgdal.dylib
+/opt/homebrew/include/  → Header-Dateien
+/opt/homebrew/share/    → Daten und Formate
+```
+
+###Intel Homebrew
+```console
+local/Cellar/gdal/<version>/
+/usr/local/bin/
+/usr/local/lib/
+```
