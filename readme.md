@@ -1,15 +1,16 @@
 ![Python 3.13](https://img.shields.io/badge/Python-3.13-green.svg)
 ![GDAL 3.11.1](https://img.shields.io/badge/GDAL-3.11.1-green.svg)
-![license MIT](https://img.shields.io/badge/license-MIT-green.svg) 
-#Python GeoTIFF's with Open Topo Date or GDAL
+![license MIT](https://img.shields.io/badge/license-MIT-green.svg)
+
+# Python GeoTIFF's with Open Topo Date or GDAL
 
 In this repository, you will find Python programs that allow you to retrieve precise elevation data from GEOTIFF files using Open Topo Data or GDAL for Python.
 The WGS84 formats are supported. You will learn how to install a local server for OPEN TOPO DATA and how to install GDAL for Python.
 
 The [map-creator](https://apps.apple.com/us/app/map-creator/id1549471927) uses GeoTIFF's to create terrain follow AGL missons. 
 ![map-creator AGL](images/map-creator.png)
-##Elevation with Open Topo Data
-###Open Topo Data Server
+## Elevation with Open Topo Data
+### Open Topo Data Server
 
 [Open Topo Data](https://www.opentopodata.org/) is a REST API server for your elevation data. It is open source. 
 
@@ -87,7 +88,7 @@ You need [git](https://git-scm.com/downloads/win) for Windows too.
 git clone https://github.com/ajnisbet/opentopodata.git
 cd opentopodata
 ```
-###Dockerfile
+### Dockerfile
 I modified the Dockerfile for Windows. Replace the Dockerfile from the repository with tis one. 
 
 ```Console
@@ -154,7 +155,7 @@ ENV GDAL_DISABLE_READDIR_ON_OPEN=TRUE
 ENV GDAL_NUM_THREADS=ALL_CPUS
 ENV GDAL_CACHEMAX=512
 ```
-###config.yaml
+### config.yaml
 We have to edit the `config.yaml` file to put in our dataset.
 ```Console
 max_locations_per_request: 100 
@@ -163,19 +164,19 @@ datasets:
 - name: aster30m
   path: data/aster30m/
 ```
-###Add GeoTIFF dataset
+### Add GeoTIFF dataset
 Now we need a dataset. We will use ASTER from the NASA. ASTER GDEM is a 1 arc-second resolution, corresponding to a resolution of about 30m at the equator. Coverage is provided from from -83 to 83 degrees latitude. This dataset has 22'912 tiles. We will only download tiles for our region. I build a python program to make this easy.
 
 ![Select Aster tiles](./images/ASTER-tiles.png) 
 
-Use this python program `Download-Aster-GeoTiff.py` from this repository. The program will unzip the GeoTIFF files and remove all `*num.tif` files. Copy your GeoTIFF files into `/your path/opentopodata/data/aster30m`
+Use this python program [Download-Aster-GeoTiff.py](./tools/Download-Aster-GeoTiff.py) from this repository. The program will unzip the GeoTIFF files and remove all `*num.tif` files. Copy your GeoTIFF files into `/your path/opentopodata/data/aster30m`
 
-###Build the local server
+### Build the local server
 Now you can run the build.
 ```Console
 docker build --tag opentopodata --file docker/Dockerfile .
 ```
-###Run the local server
+### Run the local server
 If the build is successfull you can run the server. I use port 5100. The port 5000 is already in use on Mac OS. 
 ```Console
 docker run --rm -it --volume C:/daten/github/opentopod```ata/data:/app/data:ro -p 5100:5000 -e N_UWSGI_THREADS=4 opentopodata sh -c "/usr/bin/supervisord -c /app/docker/supervisord.conf"
@@ -185,14 +186,14 @@ Now we can test the server. Replace the url adress in the python program.
 # API_URL = "https://api.opentopodata.org/v1/aster30m"
 API_URL = "http://localhost:5100/v1/aster30m"
 ```
-##Elevation with Python GDAL on Windows
+## Elevation with Python GDAL on Windows
 We will install GDAL for Python on Windows. Instead of building GDAL yourself, you can install ready-made wheels. Find the right version of Python and GDAL that work together. First you need to know your python version `python --version`. You must use the wheel for your version. 
 
 List of compatible versions (unofficial but very [reliable Windows builds](https://github.com/cgohlke/geospatial-wheels/releases/tag/v2025.7.4) by Christoph Gohlke).
 
 Install the wheel. `pip install path\to\GDAL-3.7.2-cp311-cp311-win_amd64.whl`. Python 3.11 on 64bit for example.
 
-##Elevation with Python GDAL on Mac OS
+## Elevation with Python GDAL on Mac OS
 Use the correct brew for Mac Silicon or Intel. The terminal must not use Rosetta on Mac Silicon. 
 ```Console
 uname -m
@@ -203,7 +204,7 @@ pip install GDAL=version
 ```
 Homebrew uses `/opt/homebrew/Cellar/gdal/<version>/` on Mac Silicon.
 
-###Mac Silicon Homebrew
+### Mac Silicon Homebrew
 ```console
 /opt/homebrew/bin/      → e.g. gdalinfo, ogr2ogr, gdal_translate
 /opt/homebrew/lib/      → e.g. libgdal.dylib
@@ -211,7 +212,7 @@ Homebrew uses `/opt/homebrew/Cellar/gdal/<version>/` on Mac Silicon.
 /opt/homebrew/share/    → Data and formats
 ```
 
-###Intel Homebrew
+### Intel Homebrew
 ```console
 local/Cellar/gdal/<version>/
 /usr/local/bin/
@@ -282,7 +283,7 @@ methods = {
 }
 ```
 
-##Windows 11 GDAL Python Installation
+## Windows 11 GDAL Python Installation
 Instead of building GDAL yourself, you can install ready-made wheels:
 Find the right version of Python and GDAL that work together. → List of compatible versions (unofficial but very reliable Windows builds by Christoph Gohlke).
 [GDAL wheels Windows 11](https://github.com/cgohlke/geospatial-wheels/releases/tag/v2025.7.4)
@@ -309,7 +310,7 @@ brew install gdal
 gdalinfo -–version
 pip install GDAL==version
 ```
-###Homebrew uses /opt/homebrew/Cellar/gdal/<version>/ on Mac Silicon.
+### Homebrew uses /opt/homebrew/Cellar/gdal/<version>/ on Mac Silicon.
 
 ```console
 /opt/homebrew/bin/      → z.B. gdalinfo, ogr2ogr, gdal_translate
@@ -318,7 +319,7 @@ pip install GDAL==version
 /opt/homebrew/share/    → Daten und Formate
 ```
 
-###Intel Homebrew
+### Intel Homebrew
 ```console
 local/Cellar/gdal/<version>/
 /usr/local/bin/
