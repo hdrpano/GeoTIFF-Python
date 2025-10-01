@@ -7,7 +7,6 @@ In this repository, you will find Python programmes that allow you to retrieve p
 The WGS84 and LV95 (Switzerland) formats are supported. You will learn how to install a local server for OPEN TOPO DATA and how to install GDAL for Python.
 
 The [map-creator](https://apps.apple.com/us/app/map-creator/id1549471927) uses GeoTIFF's to create terrain follow AGL missons. 
-![map-creator AGL](https://map-creator.com/index_htm_files/444.jpg)
 ![map-creator AGL](images/map-creator.png)
 ##Elevation with Open Topo Data
 ###Open Topo Data Server
