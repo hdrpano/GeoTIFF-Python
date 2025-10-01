@@ -1,15 +1,16 @@
 ![Python 3.13](https://img.shields.io/badge/Python-3.13-green.svg)
 ![GDAL 3.11.1](https://img.shields.io/badge/GDAL-3.11.1-green.svg)
-![license MIT](https://img.shields.io/badge/license-MIT-green.svg) 
-#Python GeoTIFF's with Open Topo Date or GDAL
+![license MIT](https://img.shields.io/badge/license-MIT-green.svg)
+
+# Python GeoTIFF's with Open Topo Date or GDAL
 
 In this repository, you will find Python programs that allow you to retrieve precise elevation data from GEOTIFF files using Open Topo Data or GDAL for Python.
 The WGS84 formats are supported. You will learn how to install a local server for OPEN TOPO DATA and how to install GDAL for Python.
 
 The [map-creator](https://apps.apple.com/us/app/map-creator/id1549471927) uses GeoTIFF's to create terrain follow AGL missons. 
 ![map-creator AGL](images/map-creator.png)
-##Elevation with Open Topo Data
-###Open Topo Data Server
+## Elevation with Open Topo Data
+### Open Topo Data Server
 
 [Open Topo Data](https://www.opentopodata.org/) is a REST API server for your elevation data. It is open source. 
 
