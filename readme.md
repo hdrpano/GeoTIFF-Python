@@ -2,7 +2,7 @@
 ![GDAL 3.11.1](https://img.shields.io/badge/GDAL-3.11.1-green.svg)
 ![license MIT](https://img.shields.io/badge/license-MIT-green.svg)
 
-# Python GeoTIFF's with Open Topo Date or GDAL
+# Python GeoTIFF's with Open Topo Data or GDAL
 
 In this repository, you will find Python programs that allow you to retrieve precise elevation data from GEOTIFF files using Open Topo Data or GDAL for Python.
 The WGS84 formats are supported. You will learn how to install a local server for OPEN TOPO DATA and how to install GDAL for Python.
